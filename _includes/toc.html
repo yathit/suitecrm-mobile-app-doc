@@ -1,0 +1,44 @@
+<div class="toc-top">
+  <div class="search-box">
+    <input type="text" name="search" class="search"/>
+  </div>
+  <a href="/kb/new-post/">Post a new idea...</a><br/>
+  <a href="/kb/new-question/">Ask a question...</a>
+</div>
+<ul class="toc sections">
+  <li>
+    <span class='section'>Community</span>
+    <ul class="toc pages">
+      <li>
+        <a href="/kb/?order=modified&type=Idea">New Ideas</a>
+      </li>
+      <li>
+        <a href="/kb/?order=modified&type=Question">Questions</a>
+      </li>
+      <li>
+        <a href="/kb/?type=FAQ">FAQ</a>
+      </li>
+      <li>
+        <a href="/sugarcrm-gmail/tutorial-videos.html">Videos</a>
+      </li>
+      <li>
+        <a href="/blogs/">Blogs</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+<ul class="toc sections">
+  {% for section in site.data.sections %}
+  <li>
+    <span class='section'>{% if section.path %}<a href="{{site.baseurl}}/{{ section.path }}">{{ section.name }}</a>{% else %}{{ section.name }}{% endif %}</span>
+    <ul class="toc pages">
+      {% assign pages = (site.posts | where: 'section', section.name | sort: 'index') %}
+      {% for p in pages %}
+      <li>
+        <a {% if page.url == p.url %}class="active"{% endif %} href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </li>
+  {% endfor %}
+</ul>

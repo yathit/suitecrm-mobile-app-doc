@@ -1,0 +1,6 @@
+.idea
+.DS_Store
+_site
+.sass-cache
+.jekyll-assets-cache
+_private_config.yml

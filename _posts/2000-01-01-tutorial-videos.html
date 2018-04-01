@@ -1,0 +1,35 @@
+
+<iframe id="player" width="560" height="315" src="https://www.youtube.com/embed/es3UCAXU19I?list=PL0ZVs2MTcLP82s0qTsQ3RTZXad_dZCSbU&rel=0" frameborder="0" allowfullscreen></iframe>
+
+<div id="playlist-container">
+
+</div>
+
+<table class="playlist table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th colspan="2">Title</th>
+        <th>Duration</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in site.data.playlistTutorial %}
+    <tr>
+        <td>
+            {{ forloop.index }}
+        </td>
+        <td>
+            <a href="https://www.youtube.com/embed/{{ item.id }}?autoplay=1&list=PL0ZVs2MTcLP82s0qTsQ3RTZXad_dZCSbU&rel=0" data-id="{{ item.id }}" class="video-link">{% icon fa-play %}</a>
+        </td>
+        <td>
+            {{ item.title }}
+        </td>
+        <td>
+            {{ item.duration }}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+

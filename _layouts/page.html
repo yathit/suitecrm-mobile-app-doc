@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#03C9A9">
+    <title>{{ page.title }}</title>
+    {% if page.meta_description %}
+    <meta name="description" content="{{ page.meta_description }}">
+    {% else %}
+    <meta name="description" content="{{ page.excerpt || autolink || strip_html }}">
+    {% endif %}
+
+    {% stylesheet site %}
+
+</head>
+<body {% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
+{% include navbar.html %}
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 content-wrapper">
+
+                <div class="content" id="main-content">
+                    <div class="clearfix">
+                        <div class="github-edit pull-right">
+                            {% include github-edit.html %}
+                        </div>
+                        <h1>{{ page.title }}</h1>
+                    </div>
+                    {{ content || autolink }}
+                </div>
+                <div class="content" id="search-result">
+
+                </div>
+            </div>
+            <div class="col-sm-3 toc-wrapper">
+                {% include toc.html %}
+            </div>
+        </div>
+    </div>
+</div>
+{% include footer.html %}
+{% javascript all %}
+</body>
+</html>

@@ -1,0 +1,16 @@
+<H2>I want to know about...</H2>
+<form data-persist='garlic' action="/kb/" method="post" class="forum-post empty">
+    <div><input type="text" name="title" placeholder="{{TPS}}" class="search"/></div><br/>
+    <div class="hide-empty">
+    <div><textarea name="content" rows="10" cols="60" placeholder="{{PS}}"></textarea></div>
+    <p><small><em><a href="http://commonmark.org/help/" target="_blank">Markdown format</a> is supported<a style="display: none" href="#upload" id="upload-image"> with image</a>.</em></small></p>
+    <div>
+        <input type="hidden" name="type" value="Question"/>
+        <input type="submit" value="Post"/>
+    </div>
+    </div>
+</form>
+
+<form action="/gcs/upload/" method="post" style="display: none;">
+    <input id="upload-input" type="file"/>
+</form>
