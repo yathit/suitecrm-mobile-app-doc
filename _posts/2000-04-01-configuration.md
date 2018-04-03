@@ -10,19 +10,7 @@ index: 5
 
 ## Overview
 
-You can pre-reconfigure the Yathit InboxCRM Chrome Extension directly from Enterprise Configuration File, which is available in the [License Management](/portal/index.html) Portal. The configuration provides the capability to pre-configure all licensed users.
-
-We also provides [paid support](https://www.yathit.com/buy-custom.html) for this customization.
-
-In the example given below, you can see the configuration for disabling snapshot panel in the extension.
-
-    {
-      "Sugar": {
-        "SnapshotSetting": {
-          "disabledPanel": true
-        }
-      }
-    }
+Yathit Mobile App use layout defined in [SugarCRM Studio](http://support.sugarcrm.com/Knowledge_Base/Studio_and_Module_Builder/Editing_a_Modules_Layouts/), and hence tweaking is not required. You can also configure in the mobile app itself. However if such configuration persists across whole domain, a configuration file can be set in license server. 
 
 
 ## Sugar configuration key
@@ -273,57 +261,3 @@ In the following example configuration, `Leads` module is disabled for editing a
       }
     }
 
-
-## EmailTracking configuration key
-
-Currently the `disable` key is the only supported key under the `EmailTracking` configuration key. It supports only `true` or `false` values.
-
-     {
-       "EmailTracking": {
-         "disable": true
-       }
-     }
-
-## GoogleApps configuration key
-
-The `GoogleApps` configuration key configures all Google Apps.
-
-### Contacts
-
-Follow this configuration to disable the contact sync.
-
-    {
-      "GoogleApps": {
-        "Contacts": {
-          "Sync": {
-            "disabled": true
-          }
-        }
-      }
-    }
-
-### Calendar
-
-To disable the calendar sync, follow this configuration.
-
-    {
-      "GoogleApps": {
-        "Calendar": {
-          "Sync": {
-            "disabled": true
-          }
-        }
-      }
-    }
-    
-To force syncing only with "Sync to Outlook®" option
-    
-    {
-      "Sugar": {
-        "ContactSettingPanel": {
-          "SyncOutlookContactOnly": true,
-          "SyncOutlookContactOnlyDisabled": true
-        }
-      }
-    }
-    

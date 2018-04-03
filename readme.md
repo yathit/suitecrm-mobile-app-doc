@@ -26,7 +26,7 @@ Uploading
     
 List files
 
-    gsutil ls gs://yathit-assets/screenshot    
+    gsutil ls gs://yathit-assets/screenshot/sm-*    
 
 ## Updating tutorial list
 
