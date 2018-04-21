@@ -13,6 +13,7 @@
             </replace>
         </sequential>
     </target>
+
     <target name="build" description="build site">
         <sequential>
             <exec dir="${basedir}" executable="bundle">

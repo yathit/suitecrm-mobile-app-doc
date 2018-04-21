@@ -20,9 +20,12 @@ Resizing screenshots,
 
     sips -Z 466 *.png
 
+    sips -Z 466  ~/screenshot/*.png
+
 Uploading
 
-    gsutil -m rsync -r ~/screenshot gs://yathit-assets/screenshot 
+    gsutil -m rsync -r ~/screenshot gs://yathit-assets/screenshot
+    rm ~/screenshot/*
     
 List files
 
