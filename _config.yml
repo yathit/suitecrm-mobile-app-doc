@@ -1,5 +1,5 @@
 name: Yathit Help
-baseurl: /suitecrm-mobile
+baseurl: /sugar-mobile-app
 permalink: /:title.html
 product: Yathit Mobile App
 gems: 
