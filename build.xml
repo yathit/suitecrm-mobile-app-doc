@@ -21,7 +21,7 @@
                 <arg value="jekyll" />
                 <arg value="build" />
                 <arg value="--destination" />
-                <arg value="${gae.dir}/src/main/webapp/static/sugarcrm-gmail" />
+                <arg value="${gae.dir}/src/main/webapp/static/sugar-mobile-app" />
             </exec>
         </sequential>
     </target>
