@@ -27,7 +27,7 @@
     </target>
     <target name="concat" description="concat js files">
         <concat destfile="_assets/javascripts/all.js">
-            <filelist dir="_assets/javascripts/" files="jquery-3.2.1.min.js,respond.min.js,bootstrap.min.js,youtubepopup.js,garlic.min.js,kb-script.js,youtube-responsive.js">
+            <filelist dir="_assets/javascripts/" files="jquery-3.2.1.min.js,respond.min.js,bootstrap.min.js,youtubepopup.js,garlic.min.js,kb-script.js,youtube-responsive.js,piwik.js">
             </filelist>
         </concat>
     </target>
