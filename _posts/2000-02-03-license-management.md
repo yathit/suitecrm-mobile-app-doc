@@ -13,5 +13,5 @@ License can be purchase from [Yathit web site](https://www.yathit.com/pricing.ht
 
 Simply [login to your Sugar, setup] inside Yathit Mobile App. If your sugar domain has a license, you will see a license on the sugar login panel as shown below. 
 
-{{ "sm-sugar-setting.png" | screenshot }}
+{{ "sm-sugar-setting.gif width466" | screenshot }}
 
