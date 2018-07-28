@@ -1,7 +1,7 @@
 ---
 title: Record View
 section: User Guide
-index: 4
+index: 10
 ---
 
 To view record detail, tap on a record list item on a [Module page, module] or other places like related record list. In the **Record Detail** page, you all see all the fields as you configured in your CRM.
