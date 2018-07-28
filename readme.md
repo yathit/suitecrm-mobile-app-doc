@@ -1,18 +1,18 @@
-This repository contains all that is needed to fully generate the [Knowledge Base](https://www.yathit.com/sugarcrm-gmail/) for [Yathit InboxCRM](https://www.yathit.com).
+This repository contains all that is needed to fully generate the [Knowledge Base](https://www.yathit.com/sugar-mobile-app/overview.html) for [Yathit Mobile App for Sugar/SuiteCRM](https://www.yathit.com/suitecrm-mobile-app/index.html).
 
-For this opensource Knowledge Base web site generator, please see : [Lessons Learned Building a Git-Based Knowledge Base for my SaaS product](https://www.wisecashhq.com/blog/lessons-learned-creating-a-git-based-knowledge-base-for-my-saas-product).
+For this opensource Knowledge Base web site generator, see : [Lessons Learned Building a Git-Based Knowledge Base for my SaaS product](https://www.wisecashhq.com/blog/lessons-learned-creating-a-git-based-knowledge-base-for-my-saas-product).
 
 
 ## How to run locally
 
 * Clone this repository to your machine.
-* Make sure to have Ruby installed (tested fine on Ruby 2.1.x).
+* Make sure to have Ruby installed (tested fine on Ruby 2.3.x).
 * Install required dependencies with `bundle install`
 * Run 
 
     jekyll serve
     
-* Go to [http://localhost:4000/sugarcrm-gmail/(http://localhost:4000/sugarcrm-gmail/)
+* Go to [http://localhost:4000/sugarcrm-gmail/(http://127.0.0.1:4000/sugar-mobile-app/)
 
 ## Images
 
@@ -29,11 +29,7 @@ Uploading
     
 List files
 
-    gsutil ls gs://yathit-assets/screenshot/sm-*    
-
-## Updating tutorial list
-
-To update [tutorial video list](https://www.yathit.com/sugarcrm-gmail/tutorial-videos.html) go to [video data page](http://127.0.0.1:4000/sugarcrm-gmail/video-data.html). Authorize if necessary and copy data in chrome console by `copy(JSON.stringify(data, null, 2))`. Paste data to `_data\playlistTutorial.json`.
+    gsutil ls gs://yathit-assets/screenshot/sm-*
 
 ## How to build in production
 
