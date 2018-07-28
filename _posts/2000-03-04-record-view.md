@@ -1,7 +1,7 @@
 ---
-title: View Record
+title: Record View
 section: User Guide
-index: 3
+index: 4
 ---
 
 To view record detail, tap on a record list item on a [Module page, module] or other places like related record list. In the **Record Detail** page, you all see all the fields as you configured in your CRM.
@@ -10,7 +10,7 @@ To view record detail, tap on a record list item on a [Module page, module] or o
 
 ### Call logging
 
-There are some extra features in this Mobile app. Tap on the phone number to Call, SMS, Share or Copy. Tapping on the Call will bring up your default phone dialer app to start making calls. After the call, the app will allow you to quickly log to your CRM. To do that tap on the Record button, and this page just appear. All record details are filled including the link to the Account. To save, just click save. If there is nothing to customize, you can automate this auto-log features by checking ‘auto-log call' options in the setting.
+There are some extra features in this Mobile app. Tap on the phone number to Call, SMS, Share or Copy. Tapping on the Call will bring up your default phone dialer app to start making calls. After the call, the app will allow you to quickly log to your CRM. To do that tap on the Record button {{ "fiber_manual_record" | svg_icon }}, and this page just appear. All record details are filled including the link to the Account. To save, just click save. If there is nothing to customize, you can automate this auto-log features by checking ‘auto-log call' options in the setting.
 
 {{ "sm-log-call.gif width466" | screenshot }}
 
