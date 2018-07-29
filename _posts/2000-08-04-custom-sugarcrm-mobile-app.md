@@ -1,7 +1,7 @@
 ---
 title: Custom Mobile App
 section: Admin Guide
-index: 1
+index: 4
 ---
 
 Most enterprises use Yathit Custom Mobile App which offers:
@@ -11,3 +11,5 @@ Most enterprises use Yathit Custom Mobile App which offers:
 * Regulatory complient
 * Simple license management
 * Branding
+
+[Contact us](mailto:sale@yathit.com) for your custom app.
