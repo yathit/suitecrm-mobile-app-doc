@@ -26,6 +26,10 @@ Uploading
 
     gsutil -m rsync -r ~/screenshot gs://yathit-assets/screenshot
     rm ~/screenshot/*
+
+Or
+
+    gsutil mv ~/Desktop/*.png  gs://yathit-assets/screenshot/
     
 List files
 
