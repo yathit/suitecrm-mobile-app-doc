@@ -1,8 +1,9 @@
 
 
 
-function sendAnalytic() {
-
+if (typeof sendAnalytic === 'undefined') {
+  function sendAnalytic() {
+  }
 }
 
 (function() {
@@ -164,22 +165,22 @@ function sendAnalytic() {
 
   function serverSearch(q, done) {
 
-      sendKb(function(json, status) {
-        if (status == 200) {
-          var n = json ? json.length || 0 : 0;
-          for (var i = 0; i < n; i++) {
-            json[i] = {
-              link: '/kb/' + json[i].id,
-              title: json[i].title,
-              htmlTitle: '<b>' + json[i].title + '</b>',
-              htmlSnippet: json[i].content
-            }
+    sendKb(function(json, status) {
+      if (status == 200) {
+        var n = json ? json.length || 0 : 0;
+        for (var i = 0; i < n; i++) {
+          json[i] = {
+            link: '/kb/' + json[i].id,
+            title: json[i].title,
+            htmlTitle: '<b>' + json[i].title + '</b>',
+            htmlSnippet: json[i].content
           }
-          done(json);
-        } else {
-          console.error(json);
         }
-      }, 'GET', 'search/?q=' + q);
+        done(json);
+      } else {
+        console.error(json);
+      }
+    }, 'GET', 'search/?q=' + q);
 
   }
   window.serverSearch = serverSearch;
@@ -250,10 +251,19 @@ function sendAnalytic() {
     form.onsubmit = function(ev) {
       ev.preventDefault();
       var title = form.title.value;
+      var content = form.content.value;
       var post = {
         title: title,
-        content: form.content.value
+        content: content
       };
+      if (title.length < 8) {
+        alert('Title too short.');
+        return;
+      }
+      if (content.length < 30) {
+        alert('Content must be at least 30 characters. Please explain more.');
+        return;
+      }
       if (form.id) {
         post['id'] = form.id.value;
       }
@@ -295,26 +305,34 @@ function sendAnalytic() {
     });
   }
 
+  function isUserAdmin(email) {
+    if (!email) return false;
+    var idx = email.indexOf('@');
+    if (idx === -1) return false;
+    return email.substring(idx) === '@yathit.com';
+  }
+
   var path = '/rpc_login?url=' + location.href;
   send(function(login_resp) {
-        const user = login_resp.User || {};
+    var user = login_resp.User || {};
 
-        var login_el = document.getElementById('login');
-        if (user.is_login) {
-          login_el.textContent = '';
-          document.body.classList.add('user-login');
-          login_el.textContent = 'Profile';
-          login_el.href = '/kb/profile/' + user.Id.$t;
-          if (user.is_admin || user.email === 'kyawtun@yathit.com') {
-            processAdmin(user);
-          }
-          localStorage.setItem('uid', user.Id.$t);
-        } else {
-          login_el.textContent = 'Login';
-          login_el.href = user.login_url;
-          document.body.classList.add('user-notlogin');
-        }
-      }, 'GET', path);
+    var login_el = document.getElementById('login');
+    if (user.is_login) {
+      login_el.textContent = '';
+      document.body.classList.add('user-login');
+      login_el.textContent = 'Profile';
+      login_el.href = '/kb/profile/' + user.Id.$t;
+      if (isUserAdmin(user.email)) {
+        processAdmin(user);
+      }
+      localStorage.setItem('uid', user.Id.$t);
+      localStorage.setItem('uname', user.email);
+    } else {
+      login_el.textContent = 'Login';
+      login_el.href = user.login_url;
+      document.body.classList.add('user-notlogin');
+    }
+  }, 'GET', path);
 
   renderNewPost(document.querySelector('FORM.forum-post'));
 
