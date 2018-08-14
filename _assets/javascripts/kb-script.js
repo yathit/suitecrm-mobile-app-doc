@@ -342,8 +342,8 @@ if (typeof sendAnalytic === 'undefined') {
       ev.preventDefault();
       var btn = cmt_form.querySelector('button');
       var comment = cmt_form.comment.value;
-      if (comment.length < 5) {
-        alert('Please talk more');
+      if (comment.length < 30) {
+        alert('Please explain more. Content must me longer then 30 characters.');
         return;
       }
       btn.setAttribute('disabled', '');
