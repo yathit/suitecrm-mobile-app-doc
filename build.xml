@@ -6,8 +6,8 @@
         <sequential>
             <copy overwrite="true" force="true"
                   file="${gae.dir}/src/main/webapp/static/sugarcrm-gmail/forum.html"
-                  tofile="${gae.dir}/src/main/resources/forum/forum.html" />
-            <replace summary="true" file="${gae.dir}/src/main/resources/forum/forum.html">
+                  tofile="${gae.dir}/src/main/resources/mkb/forum.html" />
+            <replace summary="true" file="${gae.dir}/src/main/resources/mkb/forum.html">
                 <replacetoken><![CDATA[<p>$CONTENT$</p>]]></replacetoken>
                 <replacevalue><![CDATA[{{CONTENT}}]]></replacevalue>
             </replace>

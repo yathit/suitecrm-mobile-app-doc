@@ -60,6 +60,20 @@ if (typeof sendAnalytic === 'undefined') {
 
 (function runForum() {
 
+  var basePath = location.pathname;
+  if (basePath.length > 4) {
+    basePath = basePath.substring(0, 4);
+    if (basePath === '/xkb/') {
+      basePath = '/xkb/';
+    } else if (basePath === '/mkb/') {
+      basePath = '/mkb/';
+    } else {
+      basePath = '/kb/';
+    }
+  } else {
+    basePath = '/kb/';
+  }
+
   function debounce(func, wait, immediate) {
     var timeout;
     return function() {
@@ -140,7 +154,7 @@ if (typeof sendAnalytic === 'undefined') {
   };
 
   function sendKb(cb, mth, path, body) {
-    send(cb, mth, '/kb/' + path, body);
+    send(cb, mth, basePath + path, body);
   }
 
   /**
@@ -170,7 +184,7 @@ if (typeof sendAnalytic === 'undefined') {
         var n = json ? json.length || 0 : 0;
         for (var i = 0; i < n; i++) {
           json[i] = {
-            link: '/kb/' + json[i].id,
+            link: basePath + json[i].id,
             title: json[i].title,
             htmlTitle: '<b>' + json[i].title + '</b>',
             htmlSnippet: json[i].content
@@ -256,10 +270,6 @@ if (typeof sendAnalytic === 'undefined') {
         title: title,
         content: content
       };
-      if (title.length < 8) {
-        alert('Title too short.');
-        return;
-      }
       if (content.length < 30) {
         alert('Content must be at least 30 characters. Please explain more.');
         return;
@@ -273,7 +283,7 @@ if (typeof sendAnalytic === 'undefined') {
       sendKb(function(json, status, statusText) {
         if (status == 200 || status == 201) {
           var id = json.threadId || json.id;
-          location.href = '/kb/' + id + '-' + json.title;
+          location.href = basePath + id + '-' + json.title;
         } else {
           alert(statusText);
         }
@@ -321,7 +331,7 @@ if (typeof sendAnalytic === 'undefined') {
       login_el.textContent = '';
       document.body.classList.add('user-login');
       login_el.textContent = 'Profile';
-      login_el.href = '/kb/profile/' + user.Id.$t;
+      login_el.href = basePath + 'profile/' + user.Id.$t;
       if (isUserAdmin(user.email)) {
         processAdmin(user);
       }
@@ -361,7 +371,7 @@ if (typeof sendAnalytic === 'undefined') {
           div.innerHTML = '<div class="post-comment" data-id="${json.id}">' +
               '<DIV class="comment-header">' +
               '<span class="poster">You</span> commented <span data-date="' + json.modifiedAt + '">a moment ago</span>' +
-              '<a style="" href="/kb/' + json.id + '-?edit=1"><i class="fa fa-edit edit-button"></i></a>' +
+              '<a style="" href="' + basePath + json.id + '-?edit=1"><i class="fa fa-edit edit-button"></i></a>' +
               '</DIV>' +
               '<DIV class="comment-content">' +
               json.content +

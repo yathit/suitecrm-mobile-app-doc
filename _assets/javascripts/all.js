@@ -213,8 +213,9 @@ events:"DOMAttrModified textInput input change click keypress paste focus".split
 
 
 
-function sendAnalytic() {
-
+if (typeof sendAnalytic === 'undefined') {
+  function sendAnalytic() {
+  }
 }
 
 (function() {
@@ -270,6 +271,20 @@ function sendAnalytic() {
 
 
 (function runForum() {
+
+  var basePath = location.pathname;
+  if (basePath.length > 4) {
+    basePath = basePath.substring(0, 4);
+    if (basePath === '/xkb/') {
+      basePath = '/xkb/';
+    } else if (basePath === '/mkb/') {
+      basePath = '/mkb/';
+    } else {
+      basePath = '/kb/';
+    }
+  } else {
+    basePath = '/kb/';
+  }
 
   function debounce(func, wait, immediate) {
     var timeout;
@@ -351,7 +366,7 @@ function sendAnalytic() {
   };
 
   function sendKb(cb, mth, path, body) {
-    send(cb, mth, '/kb/' + path, body);
+    send(cb, mth, basePath + path, body);
   }
 
   /**
@@ -376,22 +391,22 @@ function sendAnalytic() {
 
   function serverSearch(q, done) {
 
-      sendKb(function(json, status) {
-        if (status == 200) {
-          var n = json ? json.length || 0 : 0;
-          for (var i = 0; i < n; i++) {
-            json[i] = {
-              link: '/kb/' + json[i].id,
-              title: json[i].title,
-              htmlTitle: '<b>' + json[i].title + '</b>',
-              htmlSnippet: json[i].content
-            }
+    sendKb(function(json, status) {
+      if (status == 200) {
+        var n = json ? json.length || 0 : 0;
+        for (var i = 0; i < n; i++) {
+          json[i] = {
+            link: basePath + json[i].id,
+            title: json[i].title,
+            htmlTitle: '<b>' + json[i].title + '</b>',
+            htmlSnippet: json[i].content
           }
-          done(json);
-        } else {
-          console.error(json);
         }
-      }, 'GET', 'search/?q=' + q);
+        done(json);
+      } else {
+        console.error(json);
+      }
+    }, 'GET', 'search/?q=' + q);
 
   }
   window.serverSearch = serverSearch;
@@ -462,10 +477,15 @@ function sendAnalytic() {
     form.onsubmit = function(ev) {
       ev.preventDefault();
       var title = form.title.value;
+      var content = form.content.value;
       var post = {
         title: title,
-        content: form.content.value
+        content: content
       };
+      if (content.length < 30) {
+        alert('Content must be at least 30 characters. Please explain more.');
+        return;
+      }
       if (form.id) {
         post['id'] = form.id.value;
       }
@@ -475,7 +495,7 @@ function sendAnalytic() {
       sendKb(function(json, status, statusText) {
         if (status == 200 || status == 201) {
           var id = json.threadId || json.id;
-          location.href = '/kb/' + id + '-' + json.title;
+          location.href = basePath + id + '-' + json.title;
         } else {
           alert(statusText);
         }
@@ -507,26 +527,34 @@ function sendAnalytic() {
     });
   }
 
+  function isUserAdmin(email) {
+    if (!email) return false;
+    var idx = email.indexOf('@');
+    if (idx === -1) return false;
+    return email.substring(idx) === '@yathit.com';
+  }
+
   var path = '/rpc_login?url=' + location.href;
   send(function(login_resp) {
-        const user = login_resp.User || {};
+    var user = login_resp.User || {};
 
-        var login_el = document.getElementById('login');
-        if (user.is_login) {
-          login_el.textContent = '';
-          document.body.classList.add('user-login');
-          login_el.textContent = 'Profile';
-          login_el.href = '/kb/profile/' + user.Id.$t;
-          if (user.is_admin || user.email === 'kyawtun@yathit.com') {
-            processAdmin(user);
-          }
-          localStorage.setItem('uid', user.Id.$t);
-        } else {
-          login_el.textContent = 'Login';
-          login_el.href = user.login_url;
-          document.body.classList.add('user-notlogin');
-        }
-      }, 'GET', path);
+    var login_el = document.getElementById('login');
+    if (user.is_login) {
+      login_el.textContent = '';
+      document.body.classList.add('user-login');
+      login_el.textContent = 'Profile';
+      login_el.href = basePath + 'profile/' + user.Id.$t;
+      if (isUserAdmin(user.email)) {
+        processAdmin(user);
+      }
+      localStorage.setItem('uid', user.Id.$t);
+      localStorage.setItem('uname', user.email);
+    } else {
+      login_el.textContent = 'Login';
+      login_el.href = user.login_url;
+      document.body.classList.add('user-notlogin');
+    }
+  }, 'GET', path);
 
   renderNewPost(document.querySelector('FORM.forum-post'));
 
@@ -536,8 +564,8 @@ function sendAnalytic() {
       ev.preventDefault();
       var btn = cmt_form.querySelector('button');
       var comment = cmt_form.comment.value;
-      if (comment.length < 5) {
-        alert('Please talk more');
+      if (comment.length < 30) {
+        alert('Please explain more. Content must me longer then 30 characters.');
         return;
       }
       btn.setAttribute('disabled', '');
@@ -555,7 +583,7 @@ function sendAnalytic() {
           div.innerHTML = '<div class="post-comment" data-id="${json.id}">' +
               '<DIV class="comment-header">' +
               '<span class="poster">You</span> commented <span data-date="' + json.modifiedAt + '">a moment ago</span>' +
-              '<a style="" href="/kb/' + json.id + '-?edit=1"><i class="fa fa-edit edit-button"></i></a>' +
+              '<a style="" href="' + basePath + json.id + '-?edit=1"><i class="fa fa-edit edit-button"></i></a>' +
               '</DIV>' +
               '<DIV class="comment-content">' +
               json.content +
