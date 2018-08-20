@@ -726,3 +726,58 @@ LI.post-item.Deleted {
 .width466 {
   width: 466px;
 }
+
+
+ul.ydn-hover-menu li {
+  display: block;
+  min-width: 20em;
+  transition-duration: 0.5s;
+  margin-left: 0px;
+  padding-left: 0;
+  margin-bottom: 16px;
+}
+
+ul.ydn-hover-menu li:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  ul li ul.ydn-hover-menu {
+    visibility: hidden;
+    opacity: 0.9;
+    background: white;
+    position: absolute;
+    transition: all 0.5s ease;
+    left: 0;
+    display: none;
+  }
+
+  ul li:hover > ul.ydn-hover-menu,
+  ul li ul.ydn-hover-menu:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+  }
+
+  ul li ul.ydn-hover-menu li {
+    clear: both;
+    width: 100%;
+  }
+}
+
+.ydn-hover-menu A {
+  color: black;
+  font-weight: bold;
+}
+
+
+.navbar-nav > li > a.btn-download {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  background-color: #4cae4c;
+  border-color: #4cae4c;
+  color: white;
+}
+

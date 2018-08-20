@@ -5,7 +5,7 @@
     <target name="forum" description="copy forum.html and replace tokens.">
         <sequential>
             <copy overwrite="true" force="true"
-                  file="${gae.dir}/src/main/webapp/static/sugarcrm-gmail/forum.html"
+                  file="${gae.dir}/src/main/webapp/static/sugar-mobile-app/forum.html"
                   tofile="${gae.dir}/src/main/resources/mkb/forum.html" />
             <replace summary="true" file="${gae.dir}/src/main/resources/mkb/forum.html">
                 <replacetoken><![CDATA[<p>$CONTENT$</p>]]></replacetoken>
