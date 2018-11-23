@@ -159,6 +159,7 @@ if (typeof sendAnalytic === 'undefined') {
 
   /**
    * patchPost({type: 'FAQ'});
+   * patchPost({product: 1});
    * patchPost({status: 'Completed'});
    * patchPost({status: 'Deleted'}); // delete a post
    * patchPost({ownerId: 'jaap.de.koning@a4u.taxi'});
