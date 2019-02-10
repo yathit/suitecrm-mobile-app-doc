@@ -31,10 +31,11 @@
             </filelist>
         </concat>
     </target>
-    <target name="copy" description="copy distribution files" depends="forum">
+    <target name="copy" description="copy distribution files">
         <copy todir="${gae.dir}/src/main/webapp/static/sugar-mobile-app">
             <fileset dir="_site"></fileset>
         </copy>
+        <antcall target="forum"/>
     </target>
     <target name="main" depends="concat,build,forum" description="build all">
     </target>
