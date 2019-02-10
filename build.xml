@@ -31,6 +31,11 @@
             </filelist>
         </concat>
     </target>
+    <target name="copy" description="copy distribution files" depends="forum">
+        <copy todir="${gae.dir}/src/main/webapp/static/sugar-mobile-app">
+            <fileset dir="_site"></fileset>
+        </copy>
+    </target>
     <target name="main" depends="concat,build,forum" description="build all">
     </target>
 </project>
