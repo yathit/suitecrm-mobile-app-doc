@@ -26,6 +26,8 @@ Yathit Mobile App provides you with all the functionality you need to create new
 
 To upload a file to Documents module, go to Documents module. If Documents module is not appear in your drawer menu, use CUSTOMIZE MODULE option in the menu and switch on Documents module. In the Document module page, click {{ "plus" | svg_icon }}, this will bring up option to upload a file. After uploaded, it will create a Document record with the uploaded file. You can edit or relate to the newly created Document.
 
+{{ "sm-upload-file.png" | screenshot }}
+
 ### More Actions
 
 The context-sensitive, three-dot menu {{ "more-horiz" | svg_icon }} provides you with more options for each of the records.
