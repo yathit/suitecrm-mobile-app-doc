@@ -67,6 +67,8 @@ if (typeof sendAnalytic === 'undefined') {
       basePath = '/xkb/';
     } else if (basePath === '/mkb/') {
       basePath = '/mkb/';
+    } else if (basePath === '/akb/') {
+      basePath = '/akb/';
     } else {
       basePath = '/kb/';
     }
