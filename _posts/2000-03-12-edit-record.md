@@ -8,31 +8,32 @@ Yathit Mobile App provides you with all the functionality you need to create new
 
 ### Creating Records
 
-* From your home screen, you can hit the plus sign {{ "plus" | svg_icon }} to add a new record.
-* Add the contact’s name, contact details, and job details.
-* Link the record to other relevant records like companies, accounts, tasks, etc.
-* Select the lead source, assign the record, and add a campaign.
-* Add in descriptions and updates as needed.
+You can create any record in your CRM as long as you have edit access right in your CRM [module permission](https://support.sugarcrm.com/Documentation/Sugar_Versions/7.9/Ent/Administration_Guide/Role_Management/#Setting_Module-Level_Permissions). 
+
+There are couples of way to create a new record with Yathit Mobile App. A common way is from the [Module Page, module], tap the plus sign {{ "plus" | svg_icon }} to add a new record. That will present with blank screen.
+
+{{ "sm-contact-create.png" | screenshot }}
+
+Filled all require fields and click save.
 
 ### Editing Records
 
-* Select an existing record and click the “edit” action button {{ "pencil" | svg_icon }}.
-* Edit the contact’s name, contact details, and job details.
-* Link the record to other relevant records like companies, accounts, tasks, etc.
-* Edit the lead source, assignee, campaign, and more.
-* Add descriptions and updates.
+Editing is very similar and use same interface for creating record. Go to the record you want to edit and click  {{ "pencil" | svg_icon }} floating action button.
 
 ### Uploading Files
+
+Be it document or images, you can get an access to the root memory of your device and upload numerous files from your device to CRM. There is no restriction to file types. It can be a DOC, PDF, Presentation, Spreadsheet, Video file, etc. You can also click pictures from your device’s camera (product placements or technical defects) and sync them with your CRM.
 
 To upload a file to Documents module, go to Documents module. If Documents module is not appear in your drawer menu, use CUSTOMIZE MODULE option in the menu and switch on Documents module. In the Document module page, click {{ "plus" | svg_icon }}, this will bring up option to upload a file. After uploaded, it will create a Document record with the uploaded file. You can edit or relate to the newly created Document.
 
 {{ "sm-upload-file.png" | screenshot }}
 
-### More Actions
+### Creating And Removing Relationship
 
-The context-sensitive, three-dot menu {{ "more-horiz" | svg_icon }} provides you with more options for each of the records.
+If you want to create a new related record, click the Plus {{ "plus" | svg_icon }} button again. You will notice that there is a 'New' button in the select a record dialog panel. Click 'New' button to create a new record. After you click saved, a record will be created and then related to the parent record.
 
-* Go into a record and click the three dots in the top right hand corner.
-* Select “Open in Web” to open this up in your native CRM app in your web browser.
-* Select “Share” to share a direct link to the record through many popular applications including email, Slack, Skype, and other communications software.
-* Select “Delete” and you will be able to delete the record, you will need to confirm any deletions.
+{{ "sm-new-related-case.gif width466" | screenshot }}
+
+To remove the record, simply swipe to the left.
+
+{{ "sm-delete-related.gif width466" | screenshot }}
