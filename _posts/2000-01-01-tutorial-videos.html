@@ -2,11 +2,11 @@
     .wrap-row {
         padding: 48px 16px;
     }
+
     .screenshoot-panel {
         position: relative;
         text-align: center;
     }
-
 
 
     .screenshoot-panel img {
@@ -35,6 +35,7 @@
         margin: 0 auto;
         position: relative;
     }
+
     .video-overlay button {
         position: absolute;
         left: 50%;
@@ -53,6 +54,7 @@
         opacity: 0.7;
         outline: none;
     }
+
     .video-overlay button:hover {
         color: #01A6A2;
     }
@@ -84,7 +86,59 @@
     </div>
 </div>
 
-<div id="playlist-container">
+<div id="simple-playlist-container">
+    <table class="playlist table">
+        <thead>
+        <tr>
+            <th width="42">#</th>
+            <th width="32"></th>
+            <th>Title</th>
+            <th width="80">Duration</th>
+        </tr>
+        </thead>
 
+    </table>
 </div>
 
+<script type="module">
+    import {html, render} from 'https://unpkg.com/lit-html?module';
+
+    const items = [
+        {
+            title: 'Creating record',
+            name: 'create-opportunity',
+            duration: '1m'
+        },
+        {
+            title: 'Browsing module',
+            name: 'contact-browse',
+            duration: '1m'
+        },
+        {
+            title: 'Using custom module',
+            name: 'custom-modules',
+            duration: '1m'
+        }
+    ];
+
+
+    const itemTemplates = [];
+    let i = 1;
+    for (const item of items) {
+        itemTemplates.push(html`<tr>
+<td>${i++}</td>
+<td>
+ <a href="#${item.name}" data-id="${item.name}" class="video-link"><i class="fa fa-play"></i></a>
+ </td><td>
+ ${item.title}
+</td>
+<td>${item.duration}</td>
+</tr>`);
+    }
+
+    const tbody = document.createDocumentFragment();
+    render(html`<tbody>${itemTemplates}</tbody>`, tbody);
+
+    const table = document.querySelector('#simple-playlist-container table');
+    table.appendChild(tbody);
+</script>
