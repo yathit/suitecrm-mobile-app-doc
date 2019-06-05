@@ -1,6 +1,7 @@
 <style>
     .wrap-row {
         padding: 48px 16px;
+        display: flex;
     }
 
     .screenshoot-panel {
@@ -63,6 +64,28 @@
         display: none;
     }
 
+    #playlist ul {
+        list-style: none;
+        padding-left: 0;
+
+    }
+
+    #playlist li {
+        line-height: 15px;
+        padding-bottom: 8px;
+        max-height: 3em;
+        overflow: hidden;
+    }
+
+    #playlist a {
+        line-height: 15px;
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    #playlist {
+        overflow: hidden;
+    }
 
 </style>
 
@@ -84,20 +107,10 @@
             <img src="https://yathit-assets.storage.googleapis.com/web/iphonex-white.svg"/>
         </div>
     </div>
-</div>
-
-<div id="simple-playlist-container">
-    <table class="playlist table">
-        <thead>
-        <tr>
-            <th width="42">#</th>
-            <th width="32"></th>
-            <th>Title</th>
-            <th width="80">Duration</th>
-        </tr>
-        </thead>
-
-    </table>
+    <div style="padding-left: 32px;">
+        <h4>Playlist</h4>
+        <div id="playlist"></div>
+    </div>
 </div>
 
 <script type="module">
@@ -146,15 +159,9 @@
     const itemTemplates = [];
     let i = 1;
     for (const item of items) {
-        itemTemplates.push(html`<tr>
-<td>${i++}</td>
-<td>
- <a href="#${item.name}" class="video-link"><i class="fa fa-play"></i></a>
- </td><td>
- ${item.title}
-</td>
-<td>${item.duration}</td>
-</tr>`);
+        itemTemplates.push(html`<li>
+ <a href="#${item.name}" > ${item.title}</a>
+</li>`);
     }
 
     const sourceTemp = (name, type) => html`<source
@@ -162,11 +169,8 @@ src="https://yathit-assets.storage.googleapis.com/screencast/sm/xr/${name}"
 type="${type}"
 />`;
 
-    const tbody = document.createDocumentFragment();
-    render(html`<tbody>${itemTemplates}</tbody>`, tbody);
-
-    const table = document.querySelector('#simple-playlist-container table');
-    table.appendChild(tbody);
+    const tbody = document.querySelector('#playlist');
+    render(html`<ul>${itemTemplates}</ul>`, tbody);
 
     function renderSource(video, name, type) {
         const source = document.createDocumentFragment();
