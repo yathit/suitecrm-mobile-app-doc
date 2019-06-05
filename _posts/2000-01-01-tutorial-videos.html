@@ -189,6 +189,14 @@ type="${type}"
 
         jQuery('.play-button').click();
 
+        jQuery(video).on('ended', function (ev) {
+            var video = $(this);
+            var $el = video.parent().parent();
+            $el.removeClass('playing');
+            $el.find('i').removeClass('fa-pause-circle-o');
+            $el.find('i').addClass('fa-play-circle-o');
+        });
+
     }
 
     window.addEventListener("hashchange", function (e) {

@@ -29,4 +29,4 @@ ffmpeg -i "$IN.mp4" -vcodec libvpx -cpu-used -5 -deadline realtime "$IN.webm"
 
 trash $IN.mov
 gsutil mv $IN.* gs://yathit-assets/screencast/sm/xr/
-echo https://yathit-assets.storage.googleapis.com/screencast/sm/xr/
+echo "https://yathit-assets.storage.googleapis.com/screencast/sm/xr/$IN.mp4"
