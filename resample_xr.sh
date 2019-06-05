@@ -17,8 +17,10 @@ FN_JPG="$IN.jpeg"
 if [ -f $FN_JPG ] ; then
   echo "$FN_JPG"
 else
-  echo "Creating screenshot image $FN_JPG at 10 s"
-    ffmpeg  -i "$IN_MOV" -vframes 1 -ss 00:10 "$FN_JPG"
+  echo "Image file does not exist, creating screenshot image $FN_JPG at 10 s"
+  ffmpeg  -i "$IN_MOV" -vframes 1 -ss 00:10 "$FN_JPG"
+  echo "Please check the image and rerun"
+  exit 1
 fi
 
 sips --resampleWidth 360 "$FN_JPG"

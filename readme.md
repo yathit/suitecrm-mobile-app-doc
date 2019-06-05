@@ -47,6 +47,8 @@ List files
 Convert mp4 to gif 
 
     ffmpeg -i desktop-dashlet-setup.mp4 -vf fps=5,scale=360:-1 desktop-dashlet-setup.gif   
+    
+Use `resample_xr.sh` to automate.    
 
 ## How to build in production
 
