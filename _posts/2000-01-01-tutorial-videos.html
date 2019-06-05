@@ -103,21 +103,42 @@
 <script type="module">
     import {html, render} from 'https://unpkg.com/lit-html?module';
 
+    // document.querySelector('.video-overlay video').duration
     const items = [
         {
             title: 'Creating record',
             name: 'create-opportunity',
-            duration: '1m'
+            duration: '51s'
         },
         {
             title: 'Browsing module',
             name: 'contact-browse',
-            duration: '1m'
+            duration: '46s'
         },
         {
             title: 'Using custom module',
             name: 'custom-modules',
-            duration: '1m'
+            duration: '19s'
+        },
+        {
+            title: 'Using multiple CRM accounts',
+            name: 'multi-account',
+            duration: '41s'
+        },
+        {
+            title: 'Uploading documents',
+            name: 'upload-document-docx',
+            duration: '18s'
+        },
+        {
+            title: 'View documents',
+            name: 'view-file-docx',
+            duration: '9s'
+        },
+        {
+            title: 'Agenda',
+            name: 'agenda',
+            duration: '9s'
         }
     ];
 
@@ -128,7 +149,7 @@
         itemTemplates.push(html`<tr>
 <td>${i++}</td>
 <td>
- <a href="#${item.name}" data-id="${item.name}" class="video-link"><i class="fa fa-play"></i></a>
+ <a href="#${item.name}" class="video-link"><i class="fa fa-play"></i></a>
  </td><td>
  ${item.title}
 </td>
@@ -136,9 +157,79 @@
 </tr>`);
     }
 
+    const sourceTemp = (name, type) => html`<source
+src="https://yathit-assets.storage.googleapis.com/screencast/sm/xr/${name}"
+type="${type}"
+/>`;
+
     const tbody = document.createDocumentFragment();
     render(html`<tbody>${itemTemplates}</tbody>`, tbody);
 
     const table = document.querySelector('#simple-playlist-container table');
     table.appendChild(tbody);
+
+    function renderSource(video, name, type) {
+        const source = document.createDocumentFragment();
+        render(sourceTemp(name + '.' + type, 'video/' + type), source);
+        video.appendChild(source);
+    }
+
+    function playItem(item) {
+        // console.log('play ' + item.title);
+
+        let video = document.querySelector('.video-overlay video');
+        video.parentElement.removeChild(video);
+        video = document.createElement('video');
+
+        video.setAttribute('poster', `https://yathit-assets.storage.googleapis.com/screencast/sm/xr/${item.name}.jpeg`);
+
+        renderSource(video, item.name, 'mp4');
+        renderSource(video, item.name, 'webm');
+        document.querySelector('.video-overlay').appendChild(video);
+
+        jQuery('.play-button').click();
+
+    }
+
+    window.addEventListener("hashchange", function (e) {
+        const hash = location.hash.substr(1);
+        for (const item of items) {
+            if (hash == item.name) {
+                playItem(item);
+                break;
+            }
+        }
+    }, false);
+
+</script>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        jQuery('.play-button').on('click', function (ev) {
+            var $btn = $(this);
+            let video = document.querySelector('.video-overlay video');
+            if (video.paused) {
+                video.play();
+                $btn.parent().parent().addClass('playing');
+                $btn.find('i').removeClass('fa-play-circle-o');
+                $btn.find('i').addClass('fa-pause-circle-o');
+            } else {
+                video.pause();
+                $btn.parent().parent().removeClass('playing');
+                $btn.find('i').removeClass('fa-pause-circle-o');
+                $btn.find('i').addClass('fa-play-circle-o');
+            }
+        });
+
+        jQuery('video').on('ended', function (ev) {
+            var video = $(this);
+            var $el = video.parent().parent();
+            $el.removeClass('playing');
+            $el.find('i').removeClass('fa-pause-circle-o');
+            $el.find('i').addClass('fa-play-circle-o');
+        });
+
+    });
 </script>
