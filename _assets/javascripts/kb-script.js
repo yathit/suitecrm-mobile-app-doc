@@ -480,3 +480,28 @@ $(function () {
 
 
 
+jQuery('.play-button').on('click', function(ev) {
+  var $btn = $(this);
+  var video = $btn.get(0).nextElementSibling;
+  if (video.paused) {
+    video.play();
+    $btn.parent().parent().addClass('playing');
+    $btn.find('i').removeClass('fa-play-circle-o');
+    $btn.find('i').addClass('fa-pause-circle-o');
+  } else {
+    video.pause();
+    $btn.parent().parent().removeClass('playing');
+    $btn.find('i').removeClass('fa-pause-circle-o');
+    $btn.find('i').addClass('fa-play-circle-o');
+  }
+});
+
+jQuery('video').on('ended', function(ev) {
+  var video = $(this);
+  var $el = video.parent().parent();
+  $el.removeClass('playing');
+  $el.find('i').removeClass('fa-pause-circle-o');
+  $el.find('i').addClass('fa-play-circle-o');
+});
+
+

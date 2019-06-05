@@ -7,7 +7,7 @@ For this opensource Knowledge Base web site generator, see : [Lessons Learned Bu
 
 * Clone this repository to your machine.
 * Make sure to have Ruby installed (tested fine on Ruby 2.3.x).
-* Install required dependencies with `bundle install`
+* Install required dependencies with `bundle install`. Install `rvm` if bundle not found.
 * Run 
 
     jekyll serve

@@ -1,35 +1,90 @@
+<style>
+    .wrap-row {
+        padding: 48px 16px;
+    }
+    .screenshoot-panel {
+        position: relative;
+        text-align: center;
+    }
 
-<iframe id="player" width="560" height="315" src="https://www.youtube.com/embed/rW5V97j4rF0?list=PL0ZVs2MTcLP-HLnMtDwvbaGJUS8PmZTgK&rel=0" frameborder="0" allowfullscreen></iframe>
+
+
+    .screenshoot-panel img {
+        z-index: 2;
+        position: relative;
+        width: 397px;
+        top: 0;
+        vertical-align: middle;
+        border: 0;
+    }
+
+
+    .screenshoot-panel .video-overlay video {
+        position: absolute;
+        left: 0;
+        top: 15px;
+        right: 0;
+        z-index: 1;
+        margin: 0 auto;
+        display: inline-block;
+        vertical-align: baseline;
+    }
+
+    .video-wrap {
+        display: inline-block;
+        margin: 0 auto;
+        position: relative;
+    }
+    .video-overlay button {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 5;
+        border: 0;
+        background: none;
+        color: #031E1A;
+        font-size: 100px;
+        width: 100px;
+        height: 100px;
+        line-height: 0;
+        margin-left: -50px;
+        margin-top: -50px;
+        border-radius: 50%;
+        opacity: 0.7;
+        outline: none;
+    }
+    .video-overlay button:hover {
+        color: #01A6A2;
+    }
+
+    .video-wrap:not(:hover) .video-overlay.playing button {
+        display: none;
+    }
+
+
+</style>
+
+<div class="wrap-row">
+    <div class="screenshoot-panel">
+        <div class="video-wrap">
+            <div class="video-overlay">
+                <div style="text-align:center">
+                    <button class="visibl play-button"><i class="fa fa-play-circle-o"></i></button>
+                    <video poster="https://yathit-assets.storage.googleapis.com/screencast/sm/xr/contact-browse.jpeg">
+                        <source src="https://yathit-assets.storage.googleapis.com/screencast/sm/xr/contact-browse.mp4"
+                                type="video/mp4">
+                        <source src="https://yathit-assets.storage.googleapis.com/screencast/sm/xr/contact-browse.webm"
+                                type="video/webm">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+            </div>
+            <img src="https://yathit-assets.storage.googleapis.com/web/iphonex-white.svg"/>
+        </div>
+    </div>
+</div>
 
 <div id="playlist-container">
 
 </div>
-
-<table class="playlist table">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th colspan="2">Title</th>
-        <th>Duration</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for item in site.data.playlistTutorial %}
-    <tr>
-        <td>
-            {{ forloop.index }}
-        </td>
-        <td>
-            <a href="https://www.youtube.com/embed/{{ item.id }}?autoplay=1&list=PL0ZVs2MTcLP-HLnMtDwvbaGJUS8PmZTgK&rel=0" data-id="{{ item.id }}" class="video-link">{% icon fa-play %}</a>
-        </td>
-        <td>
-            {{ item.title }}
-        </td>
-        <td>
-            {{ item.duration }}
-        </td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
 
