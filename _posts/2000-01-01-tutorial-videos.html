@@ -2,6 +2,8 @@
     .wrap-row {
         padding: 48px 16px;
         display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
     }
 
     .screenshoot-panel {
@@ -85,11 +87,16 @@
 
     #playlist {
         overflow: hidden;
+        max-width: 20em;
     }
 
 </style>
 
 <div class="wrap-row">
+    <div style="padding-right: 16px;">
+        <h4>Playlist</h4>
+        <div id="playlist"></div>
+    </div>
     <div class="screenshoot-panel">
         <div class="video-wrap">
             <div class="video-overlay">
@@ -107,10 +114,7 @@
             <img src="https://yathit-assets.storage.googleapis.com/web/iphonex-white.svg"/>
         </div>
     </div>
-    <div style="padding-left: 32px;">
-        <h4>Playlist</h4>
-        <div id="playlist"></div>
-    </div>
+
 </div>
 
 <script type="module">
