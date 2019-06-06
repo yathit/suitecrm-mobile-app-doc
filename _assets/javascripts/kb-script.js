@@ -1,14 +1,11 @@
-
-
-
 if (typeof sendAnalytic === 'undefined') {
   function sendAnalytic() {
   }
 }
 
-(function() {
+(function () {
 
-  var updateChromeAppInstallButton = function(app_id, el_id) {
+  var updateChromeAppInstallButton = function (app_id, el_id) {
     var sugarcrm_install_url = 'https://chrome.google.com/webstore/detail/' + app_id;
     var app_home = 'chrome-extension://' + app_id + '/option-page.html';
     var install_btn = document.getElementById(el_id);
@@ -24,7 +21,7 @@ if (typeof sendAnalytic === 'undefined') {
           if (!install_btn.href) {
             install_btn.href = sugarcrm_install_url;
           }
-          install_btn.onclick = function(e) {
+          install_btn.onclick = function (e) {
             e.preventDefault();
             e.stopPropagation();
             chrome.webstore.install(sugarcrm_install_url, function successCallback(opt) {
@@ -78,9 +75,9 @@ if (typeof sendAnalytic === 'undefined') {
 
   function debounce(func, wait, immediate) {
     var timeout;
-    return function() {
+    return function () {
       var context = this, args = arguments;
-      var later = function() {
+      var later = function () {
         timeout = null;
         if (!immediate) func.apply(context, args);
       };
@@ -93,13 +90,15 @@ if (typeof sendAnalytic === 'undefined') {
 
   function send(cb, mth, path, body) {
     if (!cb) {
-      cb = function(x) {console.log(x);}
+      cb = function (x) {
+        console.log(x);
+      }
     }
     mth = mth || 'GET';
     var xhr = new XMLHttpRequest();
     xhr.open(mth, path, true);
     xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-    xhr.onload = function(ev) {
+    xhr.onload = function (ev) {
       if (xhr.status == 401 && /^https/.test(xhr.responseText)) {
         location.href = xhr.responseText;
         return;
@@ -113,6 +112,7 @@ if (typeof sendAnalytic === 'undefined') {
     var payload = body ? JSON.stringify(body) : null;
     xhr.send(payload);
   }
+
   window.sendRequest = send;
 
   /**
@@ -121,7 +121,7 @@ if (typeof sendAnalytic === 'undefined') {
    * @param {string=} ns
    * @param {Function=} cb
    */
-  window.queryPost = function(post, ns, cb) {
+  window.queryPost = function (post, ns, cb) {
     if (!post.id) {
       post.id = parseInt($('[data-id]').attr('data-id'), 10);
     }
@@ -137,7 +137,7 @@ if (typeof sendAnalytic === 'undefined') {
     if (ns) {
       ns = ns + '/';
     }
-    sendKb(function(json, status) {
+    sendKb(function (json, status) {
       if (cb) {
         cb(json);
       } else {
@@ -146,8 +146,8 @@ if (typeof sendAnalytic === 'undefined') {
     }, 'GET', ns + post.id + '?' + params.join('&'));
   };
 
-  window.viewVotes = function() {
-    queryPost({}, 'vote', function(json) {
+  window.viewVotes = function () {
+    queryPost({}, 'vote', function (json) {
       console.info('Post ' + json.postId);
       for (var i = 0; i < json.votes.length; i++) {
         console.info(json.votes[i] + ' vote by ' + json.voters[i].email);
@@ -167,7 +167,7 @@ if (typeof sendAnalytic === 'undefined') {
    * patchPost({ownerId: 'jaap.de.koning@a4u.taxi'});
    * patchPost({createdAt: new Date('Feb 2, 2015').getTime()})
    */
-  window.patchPost = function(post) {
+  window.patchPost = function (post) {
     if (!post.id) {
       post.id = parseInt($('[data-id]').attr('data-id'), 10);
     }
@@ -175,14 +175,14 @@ if (typeof sendAnalytic === 'undefined') {
       console.error('id');
       return;
     }
-    sendKb(function(json, status) {
+    sendKb(function (json, status) {
       console.log(json, status);
     }, 'POST', post.id + '?patch=1', post);
   };
 
   function serverSearch(q, done) {
 
-    sendKb(function(json, status) {
+    sendKb(function (json, status) {
       if (status == 200) {
         var n = json ? json.length || 0 : 0;
         for (var i = 0; i < n; i++) {
@@ -200,27 +200,20 @@ if (typeof sendAnalytic === 'undefined') {
     }, 'GET', 'search/?q=' + q);
 
   }
+
   window.serverSearch = serverSearch;
 
   function siteSearch(q, cb) {
-    var key = 'AIzaSyCFI2GA99mBSdfub0jLL0P1wmJhdVaAzsU';
-    var cx = '001835615530595934868:dd_7qpicuzq';
-    var xhr = new XMLHttpRequest();
-    var params = ['key=' + key, 'q=' + q, 'cx=' + cx];
-    xhr.open('GET', 'https://www.googleapis.com/customsearch/v1?' + params.join('&'), true);
-    if (!cb) {
-      cb = function(x) {console.log(x)};
-    }
-    xhr.onload = function() {
-      var json = JSON.parse(xhr.responseText);
+    sendKb(function (json) {
+      console.info('Post ' + json);
       cb(json.items);
-    };
-    xhr.send();
+    }, 'GET',  'site-search/?q=' + q);
   }
+
   window.siteSearch = siteSearch;
 
   function exeSearch(q, root) {
-    siteSearch(q, function(arr) {
+    siteSearch(q, function (arr) {
       root.innerHTML = '';
       var n = arr ? arr.length || 0 : 0;
       sendAnalytic('trackSiteSearch', q, 'kb', n);
@@ -234,7 +227,7 @@ if (typeof sendAnalytic === 'undefined') {
     });
   }
 
-  var dispSearchBox = debounce(function(q) {
+  var dispSearchBox = debounce(function (q) {
     var el = document.getElementById('search-result');
     var el2 = document.getElementById('main-content');
     if (q) {
@@ -247,7 +240,7 @@ if (typeof sendAnalytic === 'undefined') {
     }
   }, 500);
   var $searchBox = $('INPUT.search');
-  $searchBox.on('keyup', function(ev) {
+  $searchBox.on('keyup', function (ev) {
     var val = $(this).val();
     dispSearchBox(val);
     var form = $(this).parents('FORM').get(0);
@@ -265,7 +258,7 @@ if (typeof sendAnalytic === 'undefined') {
     if (!form) {
       return
     }
-    form.onsubmit = function(ev) {
+    form.onsubmit = function (ev) {
       ev.preventDefault();
       var title = form.title.value;
       var content = form.content.value;
@@ -283,7 +276,7 @@ if (typeof sendAnalytic === 'undefined') {
       if (form.type) {
         post['type'] = form.type.value;
       }
-      sendKb(function(json, status, statusText) {
+      sendKb(function (json, status, statusText) {
         if (status == 200 || status == 201) {
           var id = json.threadId || json.id;
           location.href = basePath + id + '-' + json.title;
@@ -293,21 +286,21 @@ if (typeof sendAnalytic === 'undefined') {
       }, 'POST', '', post);
     };
 
-    var dispSearch = debounce(function(q) {
+    var dispSearch = debounce(function (q) {
       exeSearch(q, document.getElementById('search-result'));
     }, 500);
     var $input = $(form).find('input[name="title"]');
-    $input.on('keyup', function(ev) {
+    $input.on('keyup', function (ev) {
       dispSearch($input.val());
     });
   }
 
   function processAdmin(user) {
     document.body.classList.add('user-admin');
-    $('.vote-panel').on('click', function() {
+    $('.vote-panel').on('click', function () {
       var $post = $(this).parents('[data-id]');
       var id = $post.attr('data-id');
-      queryPost({id: id}, 'vote', function(json) {
+      queryPost({id: id}, 'vote', function (json) {
         var h = $post.find('H1, H2');
         var votes = [];
         for (var i = 0; json.votes && i < json.votes.length; i++) {
@@ -326,7 +319,7 @@ if (typeof sendAnalytic === 'undefined') {
   }
 
   var path = '/rpc_login?url=' + location.href;
-  send(function(login_resp) {
+  send(function (login_resp) {
     var user = login_resp.User || {};
 
     var login_el = document.getElementById('login');
@@ -351,7 +344,7 @@ if (typeof sendAnalytic === 'undefined') {
 
   var cmt_form = document.querySelector('FORM.comment-post');
   if (cmt_form) {
-    cmt_form.addEventListener('submit', function(ev) {
+    cmt_form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       var btn = cmt_form.querySelector('button');
       var comment = cmt_form.comment.value;
@@ -366,7 +359,7 @@ if (typeof sendAnalytic === 'undefined') {
         'replyId': id,
         'content': comment
       };
-      sendKb(function(json, status, msg) {
+      sendKb(function (json, status, msg) {
         btn.removeAttribute('disabled');
         if (status == 200 || status == 201) {
           cmt_form.comment.value = '';
@@ -393,7 +386,7 @@ if (typeof sendAnalytic === 'undefined') {
     }, false);
   }
 
-  $('FORM.user-profile').on('submit', function(ev) {
+  $('FORM.user-profile').on('submit', function (ev) {
     ev.preventDefault();
     var form = ev.target;
     var nickname = form.nickname.value;
@@ -404,7 +397,7 @@ if (typeof sendAnalytic === 'undefined') {
     var data = {
       nickname: nickname
     };
-    sendKb(function(json, status, msg) {
+    sendKb(function (json, status, msg) {
       if (status == 200) {
         location.reload();
       } else {
@@ -418,7 +411,7 @@ if (typeof sendAnalytic === 'undefined') {
     $('#upload-input').click();
   });
 
-  $('#upload-input').on('change', function(ev) {
+  $('#upload-input').on('change', function (ev) {
     $btn = $('#upload-image');
     var input = $(this);
     var filename = input.val();
@@ -432,7 +425,7 @@ if (typeof sendAnalytic === 'undefined') {
       data: data,
       processData: false,
       contentType: false,
-      complete: function(xhr, code) {
+      complete: function (xhr, code) {
         if (code === 'success') {
           $btn.removeAttr('disabled');
           console.log(xhr.responseText);
@@ -444,7 +437,7 @@ if (typeof sendAnalytic === 'undefined') {
     });
   });
 
-  $('.btn-vote').on('click', function(ev) {
+  $('.btn-vote').on('click', function (ev) {
     var $item = $(this).parents('[data-id]');
     if (!$item.length) {
       throw new Error('invalid post id ' + id + ' for ' + $item.attr('data-id') +
@@ -457,7 +450,7 @@ if (typeof sendAnalytic === 'undefined') {
     }
 
     var vote = parseInt($(this).val(), 10) || 0;
-    sendKb(function(vote, status) {
+    sendKb(function (vote, status) {
       if (status == 200) {
         $item.find('[name="vote-count"]').text(vote.total);
         $item.find('.voting-panel').get(0).className = 'voting-panel vote' + vote.mine;
@@ -466,7 +459,7 @@ if (typeof sendAnalytic === 'undefined') {
     }, 'POST', 'vote/' + id + '?vote=' + vote);
   });
 
-  $('.video-link').on('click', function(ev) {
+  $('.video-link').on('click', function (ev) {
     ev.preventDefault();
     $('#player').attr('src', $(this).attr('href'));
   });
@@ -475,7 +468,7 @@ if (typeof sendAnalytic === 'undefined') {
 })();
 
 $(function () {
-  $(".youtube-popup").YouTubeModal({autoplay:0, width:640, height:360});
+  $(".youtube-popup").YouTubeModal({autoplay: 0, width: 640, height: 360});
 });
 
 
