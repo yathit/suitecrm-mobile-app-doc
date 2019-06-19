@@ -52,6 +52,8 @@ Use `resample_xr.sh` to automate.
 
 ## How to build in production
 
+In windows, use WSL2 with Ubuntu.
+
 This is mostly:
 
     ant
