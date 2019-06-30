@@ -29,7 +29,7 @@ In windows, `choco install ImageMagick`.
     
 Resize gif
 
-    gifsicle --colors 256 --resize-fit-width 360 -i  animation.gif -o animation-360px.gif      
+    gifsicle --colors 256 --resize-fit-width 466 -i  animation.gif -o animation-466.gif      
 
 Uploading
 
