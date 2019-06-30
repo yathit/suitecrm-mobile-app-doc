@@ -60,6 +60,6 @@ This is mostly:
     
 To build the site    
 
-    bundle exec jekyll build --destination ~/gae/yathit-app/src/main/webapp/static/sugar-mobile-app
+    jekyll build --destination ~/gae/yathit-app/src/main/webapp/static/sugar-mobile-app
 
 
