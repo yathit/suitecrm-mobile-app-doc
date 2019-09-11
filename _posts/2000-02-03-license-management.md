@@ -8,13 +8,13 @@ Yathit mobile app can be use free with limited features. You can either subscrib
 
 ## Purchase from Mobile Store
 
-To purchase from iOS/Android Store, from the drawer side menu, {{ "menu" | svg_icon}}, go to Setting > Premium Features. 
+To purchase from iOS/Android Store, from the drawer side menu, {{ "menu" | svg_icon}}, go to Settings > Premium Features. 
 
 ## Purchase domain license 
 
-Simply [login to your Sugar, setup] inside Yathit Mobile App. If your sugar domain has a subscription, a license will be provision automatically. Verify your license on the sugar login panel as shown below. 
+Simply [login to your Sugar, setup] inside Yathit Mobile App. If your sugar domain has a subscription, a license will be provision automatically. Verify your license on the Sugar Settings page (Menu > Settings > Sugar Settings ) as shown below. 
 
-{{ "sm-sugar-setting.gif width466" | screenshot }}
+{{ "sm-sugar-settings.png width466" | screenshot }}
 
-If you already login, but purchase later, 
+If you already login, but purchase later, simply by visiting to the Sugar Settings page will refresh license.
 

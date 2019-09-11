@@ -21,7 +21,10 @@ Resizing screenshots,
     sips -Z 466 *.png
 
     sips -Z 466  ~/screenshot/*.png
+
+Ubuntu
     
+    mogrify -resize  360x *.png
 
 In windows, `choco install ImageMagick`.
 
