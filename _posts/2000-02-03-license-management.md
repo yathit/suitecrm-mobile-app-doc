@@ -12,7 +12,7 @@ To purchase from iOS/Android Store, from the drawer side menu, {{ "menu" | svg_i
 
 ## Purchase domain license 
 
-Simply [login to your Sugar, setup] inside Yathit Mobile App. If your sugar domain has a subscription, a license will be provision automatically. Verify your license on the Sugar Settings page (Menu > Settings > Sugar Settings ) as shown below. 
+Simply [login to your Sugar, setup] inside Yathit Mobile App. If your sugar domain has a subscription, a license will be provision automatically. Verify your license on the Sugar Settings page (Menu > Settings > Sugar Settings ). If you have domain license, you will see 'Domain license' under the CRM version as shown below. 
 
 {{ "sm-sugar-settings.png width466" | screenshot }}
 
