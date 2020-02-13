@@ -1,0 +1,18 @@
+[SugarCRM](https://www.sugarcrm.com) announced today Mar 7, 2018 to their partners that SugarCRM buy out [Collabspot](https://www.collabspot.com). The announcement read:
+
+> Dear Partner,
+>  
+>   We’re excited to announce that Collabspot is now part of SugarCRM.
+>  
+>   For years, Collabspot has provided a simple yet powerful way to bridge the gap between Sugar and Gmail. It’s helped Sugar users to be more productive and efficient in their day-to-day life of selling, servicing and generally engaging with their customers. It brings key information from Sugar right into your inbox giving all customer-facing professionals better context for every customer interaction. It allows for convenient creation and editing of new Sugar records, a wealth of nifty tools like email tracking, delayed sending of emails and so much more.
+>  
+>   Collabspot is on an exciting trajectory. Here at SugarCRM, we have a big vision for how G Suite and Office365 can further enhance the Sugar experience for our customers. With our continued investment in this area, we’re excited to take the Sugar experience to the another level.
+>  
+>   If you have any questions, please don’t hesitate to reach out to partner_advisory@sugarcrm.com.
+>
+>   Best,
+>   Patrick Pahl
+>   VP Sales and Channel Operations
+
+Naturally, this lead to question about whether, Collabspot will continue to support for community Sugar fork version. Yathit, as a leading SuiteCRM Chrome Extension provider, we will make more effort to work better with community version of Sugar fork.
+ 

@@ -30,8 +30,16 @@ In windows, `choco install ImageMagick`.
 
     magick mogrify -resize  360x *.png
     
-Resize gif
+Install gifsicle to resize
 
+    sudo apt-get install gifsicle
+    
+Resize for 300 px width.
+    
+    gifsicle --colors 256 --resize-fit-width 300 -i  animation.gif -o animation-300.gif     
+    
+Or bigger     
+     
     gifsicle --colors 256 --resize-fit-width 466 -i  animation.gif -o animation-466.gif      
 
 Uploading
