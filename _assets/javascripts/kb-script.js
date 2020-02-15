@@ -60,11 +60,11 @@ if (typeof sendAnalytic === 'undefined') {
   var basePath = location.pathname;
   if (basePath.length > 4) {
     basePath = basePath.substring(0, 4);
-    if (basePath === '/xkb/') {
+    if (basePath === '/xkb') {
       basePath = '/xkb/';
-    } else if (basePath === '/mkb/') {
+    } else if (basePath === '/mkb') {
       basePath = '/mkb/';
-    } else if (basePath === '/akb/') {
+    } else if (basePath === '/akb') {
       basePath = '/akb/';
     } else {
       basePath = '/kb/';
