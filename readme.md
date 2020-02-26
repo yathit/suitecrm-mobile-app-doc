@@ -33,6 +33,7 @@ In windows, `choco install ImageMagick`.
 Install gifsicle to resize
 
     sudo apt-get install gifsicle
+    brew install gifsicle
     
 Resize for 300 px width.
     
@@ -50,6 +51,10 @@ Uploading
 Or
 
     gsutil mv ~/Desktop/*.png  gs://yathit-assets/screenshot/
+    
+To reference 
+
+    ![centered-image](https://yathit-assets.storage.googleapis.com/screenshot/sm-sugar-site-license-check-300.gif)    
     
 List files
 
