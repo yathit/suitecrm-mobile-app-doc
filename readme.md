@@ -42,6 +42,7 @@ Resize for 300 px width.
 Or bigger     
      
     gifsicle --colors 256 --resize-fit-width 466 -i  animation.gif -o animation-466.gif      
+    gifsicle --resize-fit-width 466 -i  animation.gif -o animation-466.gif      
 
 Uploading
 
