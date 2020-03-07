@@ -12,4 +12,4 @@ Most enterprises use Yathit Custom Mobile App which offers:
 * Simple license management
 * Branding
 
-[Contact us](mailto:sale@yathit.com) for your custom app.
+If you want to purchase Custom Mobile App and CRM Site License for Yathit Mobile App, please enquire [our partners, partner].
