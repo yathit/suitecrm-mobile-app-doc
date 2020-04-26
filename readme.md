@@ -58,7 +58,7 @@ Or
     
 To reference 
 
-    ![centered-image](https://yathit-assets.storage.googleapis.com/screenshot/sm-sugar-site-license-check-300.gif)    
+    ![centered-image-466](https://yathit-assets.storage.googleapis.com/screenshot/sm-sugar-site-license-check-300.gif)    
     
 List files
 
