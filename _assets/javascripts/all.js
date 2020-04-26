@@ -487,7 +487,7 @@ if (typeof sendAnalytic === 'undefined') {
     if (user.is_login) {
       login_el.textContent = '';
       document.body.classList.add('user-login');
-      login_el.textContent = 'Profile';
+      login_el.textContent = 'My Profile';
       login_el.href = basePath + 'profile/' + user.Id.$t;
       if (isUserAdmin(user.email)) {
         processAdmin(user);
