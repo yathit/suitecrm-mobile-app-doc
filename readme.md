@@ -74,12 +74,14 @@ Use `resample_xr.sh` to automate.
 
 In windows, use WSL2 with Ubuntu.
 
-This is mostly:
-
-    ant
-    
 To build the site    
 
     jekyll build --destination ~/gae/yathit-app/src/main/webapp/static/sugar-mobile-app
 
+This is mostly:
 
+    ant
+
+Then, to publish quickly as latest version
+
+    (cd ~/gae/yathit-app; mvn appengine:deploy -Dapp.deploy.version=mobiledoc)
