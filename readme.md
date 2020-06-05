@@ -6,9 +6,9 @@ For this opensource Knowledge Base web site generator, see : [Lessons Learned Bu
 ## How to run locally
 
 * Clone this repository to your machine.
-* Make sure to have Ruby installed (tested fine on Ruby 2.3.x).
+* Make sure to have Ruby installed (tested fine on Ruby 2.4.x).
 
-     rvm reinstall 2.3 
+     rvm reinstall 2.4 
 
 * Install required dependencies with `bundle install`. Install `rvm` if bundle not found.
 * Run 
@@ -84,4 +84,4 @@ This is mostly:
 
 Then, to publish quickly as latest version
 
-    (cd ~/gae/yathit-app; mvn appengine:deploy -Dapp.deploy.version=mobiledoc)
+    (cd ~/gae/yathit-app; mvn appengine:deploy -Dapp.deploy.version=website)
