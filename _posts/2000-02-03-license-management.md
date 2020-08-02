@@ -18,5 +18,5 @@ Simply [login to your Sugar, setup] inside Yathit Mobile App. If your sugar doma
 
 {{ "sm-sugar-settings.png width466" | screenshot }}
 
-If you already login, but purchase later, simply by visiting to the Sugar Settings page will refresh license.
+Site license refresh automatically. To refresh manually tap on the "Site License", a menu weill show for an option to refresh the license. 
 
