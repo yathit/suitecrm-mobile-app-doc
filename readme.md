@@ -15,6 +15,8 @@ For this opensource Knowledge Base web site generator, see : [Lessons Learned Bu
 
     jekyll serve
     
+Or `bundle exec jekyll serve`    
+    
 * Go to [http://localhost:4000/sugarcrm-gmail/(http://127.0.0.1:4000/sugar-mobile-app/)
 
 ## Images
