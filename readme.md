@@ -13,10 +13,8 @@ For this opensource Knowledge Base web site generator, see : [Lessons Learned Bu
 * Install required dependencies with `bundle install`. Install `rvm` if bundle not found.
 * Run 
 
-    jekyll serve
-    
-Or `bundle exec jekyll serve`    
-    
+    bundle exec jekyll serve
+
 * Go to [http://localhost:4000/sugarcrm-gmail/(http://127.0.0.1:4000/sugar-mobile-app/)
 
 ## Images
