@@ -18,6 +18,8 @@ Yathit Mobile App Service Plugin is standard SuiteCRM/SugarCRM plugin, which is 
 
 No configuration is need after installation. For more detail about installing and uninstalling the plugin, see in SuiteCRM [Module Loader](https://docs.suitecrm.com/admin/administration-panel/developer-tools/#_module_loader) instruction.
 
+To uninstall the plugin, simply go to Module Loader panel and click uninstall. Yathit Mobile App Service plugin is very simple plugin without altering CRM database. 
+
 ### SAML SSO login 
 
 The REST API login, which use build-in CRM authentication does not work with external SAML SSO authentication. Yathit Mobile App Service Plugin add new REST API methods for seamless login service.

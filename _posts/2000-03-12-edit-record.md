@@ -25,23 +25,60 @@ Editing is very similar and use same interface for creating record. Go to the re
 
 ### Inline Editing
 
-Each field can be edited independently in record page. 
+Each field can be edited independently in record detail page. 
 
-Editing a name field
+#### Editing a name field
 
 ![centered-image-466](https://yathit-assets.storage.googleapis.com/screenshot/sm-inline-edit-last-name.gif)  
 
-Editing address fields by picking a place in Google Map
+#### Editing address fields by picking a place in Google Map
 
 ![centered-image-466](https://yathit-assets.storage.googleapis.com/screenshot/sm-inline-edit-address-466.gif)    
+
+#### Phone numbers
 
 Phone number has multiple fields like work, home, mobile, etc. For phone number field, in addition to inline editing phone number, these fields can be swap if in wrong labels. 
 
 ![centered-image-466](https://yathit-assets.storage.googleapis.com/screenshot/sm-inline-edit-phone-swap-fields.gif)    
 
-Editing a related field
+#### Editing a related field
 
 ![centered-image-466](https://yathit-assets.storage.googleapis.com/screenshot/sm-inline-edit-related.gif)  
+
+#### Using QR / Barcode
+
+QR or barcode are commonly used in industry and often records those values in CRM record fields. You can use mobile phone to scan QR / barcode to update the field. To do so long press on the label of the field to bring up bottom-up menu. Select 'Scan QR/Barcode' menu option to start scanning with your phone camera. Once scanning is completed, the field will be updated. 
+
+![centered-image-466](https://yathit-assets.storage.googleapis.com/screenshot/sm-inline-edit-qr-barcode.gif)
+
+It is also possible to display barcode scanning button on the editing field. Tapping the QR/barcode button will bring up scanning with your phone camera.
+
+![centered-image-466](https://yathit-assets.storage.googleapis.com/screenshot/sm-inline-ocr-button.png)
+
+To display barcode scanning button, specify`'barcode' => true` in `displayParams` of the field in `editviewdefs.php` edit view metadata file. 
+
+
+    array(
+        'EditView' =>
+        array(
+          ...
+    'panels' =>
+    array(
+      'lbl_account_information' =>
+        ...
+             array(
+                    'name' => 'website',
+                    'type' => 'link',
+                    'label' => 'LBL_WEBSITE',
+                    'displayParams' =>
+                      array(
+                        'barcode' => true,
+                      ),
+                  ),
+            ),
+    ...
+
+Instead of editing original `editviewdefs.php`, copy the file into custom folder, for example `custom/modules/Accounts/metadata/editviewdefs.php`, as [a best practice for customization](https://docs.suitecrm.com/developer/metadata/). 
 
 ### Deleting A Record
 
