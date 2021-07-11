@@ -6,7 +6,8 @@ index: 1
 
 Yathit Mobile App for SugarCrM/SuiteCRM work out-of-the-box and does **not** require server side setup or plugin installation. However, if you need the following features, install Yathit Mobile App Service Plugin on your CRM,
 
-1. SAML SSO login 
+1. SAML SSO login
+1. [Desktop Notifications](https://docs.suitecrm.com/user/introduction/user-interface/desktop-notifications/) 
 1. Reporting
 
 ## Yathit Mobile App Service Plugin installation
@@ -33,5 +34,16 @@ This service introduces two Sugar entry points. 1) `SeamlessSession` is an authe
 SugarCRM CE REST API v4 does not have API to query reporting data. Yathit Mobile App Service Plugin add new REST API methods to query Report data.
 
 {{ "sm-report-data-table-panel.png width360" | screenshot }}
+
+### Desktop Notifications
+
+SuiteCRM Alerts or [desktop notifications](https://docs.suitecrm.com/user/introduction/user-interface/desktop-notifications/)  are an excellent way of calling user’s attention immediately as it happens. Once desktop notifications have been enabled, users will receive notifications for any Calendar events such as:
+
+* Meetings you have been invited to that have popup reminders set.
+* Calls you have been invited to that have popup reminders set.
+
+You can customize additional alerts such as when a Task is assigned to a user using [Workflow or Logic hook](https://community.suitecrm.com/t/how-to-create-notifications-by-using-workflows-logic-hooks/70809). Once an alerts is created, the assigned user of the Alert record will receive notification in Yathit mobile app immediately. Alert record's title and description will be display in the notification. If `url_redirect` field of the Alert record is set, the redirected record will be displayed upon tapping on the notification.  
+
+
 
 

@@ -1,5 +1,5 @@
 ---
-title: Working With Record
+title: Working With Records
 section: User Guide
 index: 10
 ---
