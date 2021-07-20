@@ -6,8 +6,8 @@ index: 1
 
 Yathit Mobile App for SugarCrM/SuiteCRM work out-of-the-box and does **not** require server side setup or plugin installation. However, if you need the following features, install Yathit Mobile App Service Plugin on your CRM,
 
-1. SAML SSO login
-1. [Desktop Notifications](https://docs.suitecrm.com/user/introduction/user-interface/desktop-notifications/) 
+1. SAML SSO Login
+1. SuiteCRM Alerts
 1. Reporting
 
 ## Yathit Mobile App Service Plugin installation
@@ -29,14 +29,11 @@ Seamless login service provides token based authorization for REST API from web 
 
 This service introduces two Sugar entry points. 1) `SeamlessSession` is an authenticated entry point which redirects to a URL with  `seamless_token` in query parameters. A 512-bit cryptographically secure pseudo random by openssl library is used to generate the token, which is valid for 2 minutes. 2) A token consumer, usually the Yathit Mobile App, uses the token to exchange for REST API `session_id`. The resulting `session_id` is consumed to invoke standard REST API endpoints.
 
-### Desktop Notifications
+### SuiteCRM Alerts
 
-SuiteCRM Alerts or [desktop notifications](https://docs.suitecrm.com/user/introduction/user-interface/desktop-notifications/)  are an excellent way of calling user’s attention immediately as it happens. Once desktop notifications have been enabled, users will receive notifications for any Calendar events such as:
+SuiteCRM Alerts are an excellent way of calling user’s attention immediately as it happens. 
 
-* Meetings you have been invited to that have popup reminders set.
-* Calls you have been invited to that have popup reminders set.
-
-You can customize additional alerts such as when a Task is assigned to a user using [Workflow or Logic hook](https://community.suitecrm.com/t/how-to-create-notifications-by-using-workflows-logic-hooks/70809). Once an alerts is created, the assigned user of the Alert record will receive notification in Yathit mobile app immediately. Alert record's title and description will be display in the notification. If `url_redirect` field of the Alert record is set, the redirected record will be displayed upon tapping on the notification.
+You can customize additional alerts such as when a Task is assigned to a user using [Workflow or Logic hook](https://community.suitecrm.com/t/how-to-create-notifications-by-using-workflows-logic-hooks/70809). Once an alerts is created, the assigned user of the Alert record will receive notification in Yathit mobile app immediately. Alert record's `title` and `description` will be display in the notification. If `url_redirect` field of the Alert record is set, the redirected record will be displayed upon tapping on the notification.
 
 ### Report panel
 
